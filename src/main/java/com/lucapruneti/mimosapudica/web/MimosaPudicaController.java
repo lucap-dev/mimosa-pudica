@@ -1,24 +1,17 @@
 package com.lucapruneti.mimosapudica.web;
 
-import com.google.common.io.ByteStreams;
-import com.lucapruneti.mimosapudica.service.MimosaService;
+import com.lucapruneti.mimosapudica.service.MimosaPudicaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.support.ServletContextResource;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 
 @RestController
 public class MimosaPudicaController {
 
     @Autowired
-    private MimosaService mimosaService;
+    private MimosaPudicaService mimosaService;
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(value = Exception.class)

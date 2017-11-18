@@ -2,7 +2,7 @@ package com.lucapruneti.mimosapudica.service;
 
 import java.io.IOException;
 
-public interface MimosaService {
+public interface MimosaPudicaService {
 
     byte[] show(String predefinedTypeName,
                 String reference) throws IOException;
