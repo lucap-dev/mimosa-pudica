@@ -5,13 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-
 @RestController
 public class MimosaPudicaController {
 
     @Autowired
-    private MimosaPudicaService mimosaService;
+    private MimosaPudicaService mimosaPudicaService;
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(value = Exception.class)
@@ -24,9 +22,9 @@ public class MimosaPudicaController {
             method = RequestMethod.GET)
     public ResponseEntity<byte[]> show(@PathVariable String predefinedTypeName,
                                        @PathVariable String dummySeoName,
-                                       @RequestParam("reference") String reference) throws IOException {
+                                       @RequestParam("reference") String reference) {
 
-        byte[] bytes = mimosaService.show(predefinedTypeName, reference);
+        byte[] bytes = mimosaPudicaService.show(predefinedTypeName, reference);
 
         final HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.IMAGE_PNG);
@@ -39,7 +37,9 @@ public class MimosaPudicaController {
             params = "reference",
             method = RequestMethod.DELETE)
     public ResponseEntity show(@PathVariable String predefinedTypeName,
-                               @RequestParam("reference") String reference) throws IOException {
+                               @RequestParam("reference") String reference) {
+
+        mimosaPudicaService.flush(predefinedTypeName, reference);
 
         return new ResponseEntity(HttpStatus.OK);
     }

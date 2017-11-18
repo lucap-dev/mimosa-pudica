@@ -1,6 +1,7 @@
 package com.lucapruneti.mimosapudica.repository;
 
 import com.google.common.io.ByteStreams;
+import com.lucapruneti.mimosapudica.service.PredifinedTypeName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +26,13 @@ public class MimosaPudicaRepositoryS3Impl implements MimosaPudicaRepository {
 
     private Logger LOG = LoggerFactory.getLogger(MimosaPudicaRepositoryS3Impl.class);
 
-    public byte[] find(String resourceId) {
+    @Override
+    public byte[] findImage(String resourceId,
+                            PredifinedTypeName predifinedTypeName) {
+
+        //<predefined-type-name>/<first-4-chars>/<second-4-chars>/<unique-original-image-file-name>
+
+        resourceId = "src/test/resources/images/test.jpg";
 
         byte[] bytes = null;
         InputStream inputStream = null;
@@ -52,22 +59,14 @@ public class MimosaPudicaRepositoryS3Impl implements MimosaPudicaRepository {
     }
 
     @Override
-    public byte[] findOriginalImage(String resourceId) {
-        return new byte[0];
+    public byte[] saveImage(byte[] image, PredifinedTypeName predifinedTypeName) {
+        return image;
     }
 
     @Override
-    public byte[] findOptimizedImage(String resourceId) {
-        return new byte[0];
-    }
+    public boolean deleteImage(String resourceId,
+                               PredifinedTypeName predifinedTypeName) {
 
-    @Override
-    public boolean deleteOriginalImage(String resourceId) {
-        return false;
-    }
-
-    @Override
-    public boolean deleteOptimizedImage(String resourceId) {
-        return false;
+        return true;
     }
 }

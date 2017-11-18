@@ -1,13 +1,13 @@
 package com.lucapruneti.mimosapudica.repository;
 
+import com.lucapruneti.mimosapudica.service.PredifinedTypeName;
+
 public interface MimosaPudicaRepository {
 
-    byte[] findOriginalImage(String resourceId);
+    byte[] findImage(String resourceId, PredifinedTypeName predifinedTypeName);
 
-    byte[] findOptimizedImage(String resourceId);
+    byte[] saveImage(byte[] image, PredifinedTypeName predifinedTypeName);
 
-    boolean deleteOriginalImage(String resourceId);
-
-    boolean deleteOptimizedImage(String resourceId);
+    boolean deleteImage(String resourceId, PredifinedTypeName predifinedTypeName);
 
 }
