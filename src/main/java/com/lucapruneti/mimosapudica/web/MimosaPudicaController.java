@@ -33,10 +33,10 @@ public class MimosaPudicaController {
         return new ResponseEntity<byte[]>(bytes, headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/image/show/{predefinedTypeName}",
+    @RequestMapping(value = "/image/flush/{predefinedTypeName}",
             params = "reference",
             method = RequestMethod.DELETE)
-    public ResponseEntity show(@PathVariable String predefinedTypeName,
+    public ResponseEntity flush(@PathVariable String predefinedTypeName,
                                @RequestParam("reference") String reference) {
 
         mimosaPudicaService.flush(predefinedTypeName, reference);
