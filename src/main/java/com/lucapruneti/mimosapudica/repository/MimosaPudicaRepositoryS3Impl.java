@@ -104,7 +104,7 @@ public class MimosaPudicaRepositoryS3Impl implements MimosaPudicaRepository {
                             PredifinedTypeName predifinedTypeName) {
 
         //<predefined-type-name>/<first-4-chars>/<second-4-chars>/<unique-original-image-file-name>
-
+        //TODO - Add implementation here
 
         return mock();
     }
@@ -124,7 +124,13 @@ public class MimosaPudicaRepositoryS3Impl implements MimosaPudicaRepository {
                     inputStream,
                     objectMetadata);
         } catch (AmazonServiceException ase) {
+            if (LOG.isErrorEnabled()) {
+                LOG.error("TODO - Add message here");
+            }
         } catch (AmazonClientException ece) {
+            if (LOG.isErrorEnabled()) {
+                LOG.error("TODO - Add message here");
+            }
         } finally {
             try {
                 if (inputStream != null) {
@@ -143,6 +149,7 @@ public class MimosaPudicaRepositoryS3Impl implements MimosaPudicaRepository {
     public boolean deleteImage(String resourceName,
                                PredifinedTypeName predifinedTypeName) {
 
+        //TODO - Add implementation here
         return true;
     }
 
