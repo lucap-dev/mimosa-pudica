@@ -4,10 +4,10 @@ import com.lucapruneti.mimosapudica.service.PredifinedTypeName;
 
 public interface MimosaPudicaRepository {
 
-    byte[] findImage(String resourceId, PredifinedTypeName predifinedTypeName);
+    byte[] findImage(String resourceName, PredifinedTypeName predifinedTypeName);
 
-    byte[] saveImage(byte[] image, PredifinedTypeName predifinedTypeName);
+    byte[] saveImage(byte[] image, String resourceName, PredifinedTypeName predifinedTypeName);
 
-    boolean deleteImage(String resourceId, PredifinedTypeName predifinedTypeName);
+    boolean deleteImage(String resourceName, PredifinedTypeName predifinedTypeName);
 
 }

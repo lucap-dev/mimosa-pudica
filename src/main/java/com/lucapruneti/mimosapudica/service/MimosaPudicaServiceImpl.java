@@ -44,6 +44,9 @@ public class MimosaPudicaServiceImpl implements MimosaPudicaService {
 
         image = mimosaPudicaRepository.findImage(reference, PredifinedTypeName.ORIGINAL);
         if (image == null) {
+            if (LOG.isErrorEnabled()) {
+                LOG.error("TODO - Add message here");
+            }
             throw new RuntimeException("Unable to find predefinedTypeName = '"
                     + predefinedTypeName
                     + "' - reference = '"
@@ -59,12 +62,11 @@ public class MimosaPudicaServiceImpl implements MimosaPudicaService {
             throw new RuntimeException();
         }
 
-        image = mimosaPudicaRepository.saveImage(image, PredifinedTypeName.THUMBNAIL);
+        mimosaPudicaRepository.saveImage(image, reference, PredifinedTypeName.THUMBNAIL);
         if (image == null) {
             if (LOG.isErrorEnabled()) {
                 LOG.error("TODO - Add message here");
             }
-            throw new RuntimeException();
         }
 
         return image;
